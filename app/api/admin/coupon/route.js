@@ -29,7 +29,7 @@ export async function POST(request) {
     })
 
     return NextResponse.json({ message: "Coupon added successfully" });
-  } catch {
+  } catch (error) {
     console.error(error);
     return NextResponse.json(
       { error: error.code || error.message },
@@ -51,9 +51,9 @@ export async function DELETE(request) {
     const { searchParams } = request.nextUrl;
     const code = searchParams.get("code");
 
-    await prisma.coupon.delete({ where: code });
+    await prisma.coupon.delete({ where: {code} });
     return NextResponse.json({ message: "Coupon deleted successfully" });
-  } catch {
+  } catch (error) {
     console.error(error);
     return NextResponse.json(
       { error: error.code || error.message },
