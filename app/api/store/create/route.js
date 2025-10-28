@@ -1,25 +1,23 @@
 import imagekit from "@/configs/imagekit";
 import prisma from "@/lib/prisma";
-import { clerkClient, getAuth } from "@clerk/nextjs/server";
+import { getAuth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
 // create the store
 export async function POST(request) {
   try {
     const { userId } = getAuth(request);
-    if (!userId) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
 
     // get the data from the form
     const formData = await request.formData();
-    const name = formData.get("name")?.toString().trim() ?? "";
-    const username = formData.get("username")?.toString().trim() ?? "";
-    const description = formData.get("description")?.toString().trim() ?? "";
-    const email = formData.get("email")?.toString().trim() ?? "";
-    const contact = formData.get("contact")?.toString().trim() ?? "";
-    const address = formData.get("address")?.toString().trim() ?? "";
-    const image = formData.get("image");
+
+    const name = formData.get("name")
+    const username = formData.get("username")
+    const description = formData.get("description")
+    const email = formData.get("email")
+    const contact = formData.get("contact")
+    const address = formData.get("address")
+    const image = formData.get("image")
 
     if (
       !name ||
@@ -28,50 +26,13 @@ export async function POST(request) {
       !email ||
       !contact ||
       !address ||
-      !image ||
-      typeof image === "string" ||
-      typeof image.arrayBuffer !== "function"
+      !image
     ) {
       return NextResponse.json(
         { message: "Missing required store information" },
         { status: 400 }
       );
     }
-
-    // ensure user exists locally before creating a store (covers missing webhook events)
-    let existingUser = await prisma.user.findUnique({
-      where: { id: userId },
-    });
-
-    if (!existingUser) {
-      let clerkUser;
-      try {
-        clerkUser = await clerkClient.users.getUser(userId);
-      } catch (clerkError) {
-        console.error("Failed to fetch Clerk user", clerkError);
-      }
-
-      const clerkName = [clerkUser?.firstName, clerkUser?.lastName]
-        .filter(Boolean)
-        .join(" ")
-        .trim();
-
-      const fallbackEmail =
-        clerkUser?.primaryEmailAddress?.emailAddress ||
-        clerkUser?.emailAddresses?.[0]?.emailAddress ||
-        email;
-
-      existingUser = await prisma.user.create({
-        data: {
-          id: userId,
-          name: clerkName || name,
-          email: fallbackEmail,
-          image: clerkUser?.imageUrl || "",
-        },
-      });
-    }
-
-    const normalizedUsername = username.toLowerCase();
 
     // check if user have already registered a store
     const store = await prisma.store.findFirst({
@@ -88,13 +49,13 @@ export async function POST(request) {
     // check if username is already taken
     const isUsernameTaken = await prisma.store.findFirst({
       where: {
-        username: normalizedUsername,
+        username: username.toLowerCase(),
       },
     });
 
     if (isUsernameTaken) {
       return NextResponse.json(
-        { message: "Username already taken" },
+        { error: "Username already taken" },
         { status: 400 }
       );
     }
@@ -104,7 +65,7 @@ export async function POST(request) {
     const response = await imagekit.upload({
       file: buffer,
       fileName: image.name,
-      folder: "logos",
+      folder: "logos"
     });
 
     const optimizedImage = imagekit.url({
@@ -112,7 +73,7 @@ export async function POST(request) {
       transformation: [
         { quality: "auto" },
         { format: "webp" },
-        { height: "512" },
+        { width: "512" },
       ],
     });
 
@@ -121,11 +82,11 @@ export async function POST(request) {
         userId,
         name,
         description,
-        username: normalizedUsername,
+        username: username.toLowerCase(),
         email,
         contact,
         address,
-        logo: optimizedImage,
+        logo: optimizedImage
       },
     });
 
@@ -142,12 +103,8 @@ export async function POST(request) {
     return NextResponse.json({ message: "applied, waiting for approval" });
   } catch (error) {
     console.error(error);
-    const errorMessage =
-      typeof error === "string"
-        ? error
-        : error?.message || "Unable to create store";
     return NextResponse.json(
-      { message: error.code || errorMessage },
+      { error: error.code || error.message },
       { status: 400 }
     );
   }
@@ -172,7 +129,7 @@ export async function GET(request) {
     } catch (error) {
         console.error(error);
         return NextResponse.json(
-          { message: error.code || error.message || "Unable to fetch store status" },
+          { error: error.code || error.message },
           { status: 400 }
         );
     }
