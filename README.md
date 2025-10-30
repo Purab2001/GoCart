@@ -34,8 +34,6 @@ _Empowering organizations with seamless shopping, selling, and marketplace solut
 ![Build Passing](https://img.shields.io/badge/Build-Passing-brightgreen)
 ![Dependencies Up to Date](https://img.shields.io/badge/Dependencies-Up_to_Date-success)
 
-[Live Demo](https://go-cart-theta.vercel.app)
-
 </div>
 
 ---
