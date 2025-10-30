@@ -1,15 +1,40 @@
 <div align="center">
 
-# 🛒 GoCart
+# � GoCart
 
-### A Modern Multi-Vendor E-Commerce Platform
+### Modern Multi-Vendor E-Commerce Platform
 
-[![License](https://img.shields.io/github/license/Purab2001/GoCart?style=flat-square)](./LICENSE.md)
-[![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](./CONTRIBUTING.md)
-[![Stars](https://img.shields.io/github/stars/Purab2001/GoCart?style=flat-square)](https://github.com/Purab2001/GoCart/stargazers)
+_Empowering organizations with seamless shopping, selling, and marketplace solutions._
 
-[Live Demo](https://gocartshop.in) · [Report Bug](https://github.com/Purab2001/GoCart/issues) · [Request Feature](https://github.com/Purab2001/GoCart/issues)
+[![🔥 LIVE](https://img.shields.io/badge/🔥-LIVE_GOCART-red?style=for-the-badge)](https://go-cart-theta.vercel.app)
+[![⚛️ NEXT.JS](https://img.shields.io/badge/⚛️-NEXT.JS-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![15.5.6](https://img.shields.io/badge/15.5.6-green?style=for-the-badge)](https://nextjs.org/)
+[![⚛️ REACT](https://img.shields.io/badge/⚛️-REACT-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
+[![19.0](https://img.shields.io/badge/19.0-blue?style=for-the-badge)](https://reactjs.org/)
+[![🌊 TAILWIND](https://img.shields.io/badge/🌊-TAILWIND-cyan?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
+[![4.0](https://img.shields.io/badge/4.0-teal?style=for-the-badge)](https://tailwindcss.com/)
+[![� CLERK](https://img.shields.io/badge/�-CLERK-purple?style=for-the-badge&logo=clerk)](https://clerk.com/)
+[![AUTH](https://img.shields.io/badge/AUTH-blueviolet?style=for-the-badge)](https://clerk.com/)
+
+[![💳 STRIPE](https://img.shields.io/badge/💳-STRIPE-blueviolet?style=flat-square&logo=stripe)](#)
+[![PAYMENTS](https://img.shields.io/badge/PAYMENTS-6772E5?style=flat-square)](#)
+[![🗄️ PRISMA](https://img.shields.io/badge/🗄️_PRISMA-2D3748?style=flat-square&logo=prisma)](#)
+[![ORM](https://img.shields.io/badge/ORM-2D3748?style=flat-square)](#)
+[![🐘 POSTGRESQL](https://img.shields.io/badge/🐘_POSTGRESQL-336791?style=flat-square&logo=postgresql)](#)
+[![DATABASE](https://img.shields.io/badge/DATABASE-4169E1?style=flat-square)](#)
+[![🖼️ IMAGEKIT](https://img.shields.io/badge/🖼️_IMAGEKIT-FF6B6B?style=flat-square)](#)
+[![CDN](https://img.shields.io/badge/CDN-FF6B6B?style=flat-square)](#)
+[![🤖 OPENAI](https://img.shields.io/badge/🤖_OPENAI-412991?style=flat-square&logo=openai)](#)
+[![AI](https://img.shields.io/badge/AI-74AA9C?style=flat-square)](#)
+[![▲ VERCEL](https://img.shields.io/badge/▲_VERCEL-000000?style=flat-square&logo=vercel)](#)
+[![HOSTING](https://img.shields.io/badge/HOSTING-000000?style=flat-square)](#)
+
+![Version 0.1.0](https://img.shields.io/badge/Version-0.1.0-blue)
+![Status Production](https://img.shields.io/badge/Status-Production-green)
+![Build Passing](https://img.shields.io/badge/Build-Passing-brightgreen)
+![Dependencies Up to Date](https://img.shields.io/badge/Dependencies-Up_to_Date-success)
+
+[Live Demo](https://go-cart-theta.vercel.app)
 
 </div>
 
@@ -29,8 +54,8 @@
     <td align="center"><b>Dashboard</b></td>
   </tr>
   <tr>
-    <td><img src="public/screenshot-homepage.png" alt="Homepage" height="300"></td>
-    <td><img src="public/screenshot-dashboard.png" alt="Dashboard" height="300"></td>
+    <td><img src="./screenshots/screenshot-homepage.png" alt="Homepage" height="300"></td>
+    <td><img src="./screenshots/screenshot-dashboard.png" alt="Dashboard" height="300"></td>
   </tr>
 </table>
 
@@ -225,27 +250,6 @@
 npm run build
 npm start
 ```
-
----
-
-## 🔗 Links
-
-- 🌐 **Live Demo**: [https://gocartshop.in](https://gocartshop.in)
-- 📖 **Documentation**: [View Docs](./docs)
-- 🐛 **Issue Tracker**: [GitHub Issues](https://github.com/Purab2001/GoCart/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/Purab2001/GoCart/discussions)
-
----
-
-## 🤝 Contributing
-
-We welcome contributions from the community! Please read our [Contributing Guidelines](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md) before submitting a pull request.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** - see the [LICENSE.md](./LICENSE.md) file for details.
 
 ---
 
