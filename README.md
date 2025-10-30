@@ -29,8 +29,8 @@
     <td align="center"><b>Dashboard</b></td>
   </tr>
   <tr>
-    <td><img src="public/screenshot-homepage.png" alt="Homepage" height="300"></td>
-    <td><img src="public/screenshot-dashboard.png" alt="Dashboard" height="300"></td>
+    <td><img src="./screenshot-homepage.png" alt="Homepage" height="300"></td>
+    <td><img src="./screenshot-dashboard.png" alt="Dashboard" height="300"></td>
   </tr>
 </table>
 
@@ -225,27 +225,6 @@
 npm run build
 npm start
 ```
-
----
-
-## 🔗 Links
-
-- 🌐 **Live Demo**: [https://gocartshop.in](https://gocartshop.in)
-- 📖 **Documentation**: [View Docs](./docs)
-- 🐛 **Issue Tracker**: [GitHub Issues](https://github.com/Purab2001/GoCart/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/Purab2001/GoCart/discussions)
-
----
-
-## 🤝 Contributing
-
-We welcome contributions from the community! Please read our [Contributing Guidelines](./CONTRIBUTING.md) and [Code of Conduct](./CODE_OF_CONDUCT.md) before submitting a pull request.
-
----
-
-## 📜 License
-
-This project is licensed under the **MIT License** - see the [LICENSE.md](./LICENSE.md) file for details.
 
 ---
 
