@@ -97,26 +97,20 @@ const Navbar = () => {
           {/* Mobile User Button  */}
           <div className="sm:hidden">
             {user ? (
-              <div>
-                <UserButton>
-                  <UserButton.MenuItems>
-                    <UserButton.Action
-                      labelIcon={<ShoppingCartIcon size={16} />}
-                      label="Cart"
-                      onClick={() => router.push("/cart")}
-                    ></UserButton.Action>
-                  </UserButton.MenuItems>
-                </UserButton>
-                <UserButton>
-                  <UserButton.MenuItems>
-                    <UserButton.Action
-                      labelIcon={<PackageIcon size={16} />}
-                      label="My Orders"
-                      onClick={() => router.push("/orders")}
-                    ></UserButton.Action>
-                  </UserButton.MenuItems>
-                </UserButton>
-              </div>
+              <UserButton>
+                <UserButton.MenuItems>
+                  <UserButton.Action
+                    labelIcon={<ShoppingCartIcon size={16} />}
+                    label="Cart"
+                    onClick={() => router.push("/cart")}
+                  ></UserButton.Action>
+                  <UserButton.Action
+                    labelIcon={<PackageIcon size={16} />}
+                    label="My Orders"
+                    onClick={() => router.push("/orders")}
+                  ></UserButton.Action>
+                </UserButton.MenuItems>
+              </UserButton>
             ) : (
               <button
                 onClick={openSignIn}
