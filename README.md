@@ -1,6 +1,6 @@
 <div align="center">
 
-# � GoCart
+# 🛒 GoCart
 
 ### Modern Multi-Vendor E-Commerce Platform
 
