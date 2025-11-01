@@ -1,4 +1,4 @@
-<div align="center">
+<img width="933" height="511" alt="image" src="https://github.com/user-attachments/assets/cc4a8f56-4077-44bf-ab3d-fba0bae53442" /><div align="center">
 
 # 🛒 GoCart
 
@@ -6,7 +6,7 @@
 
 _Empowering organizations with seamless shopping, selling, and marketplace solutions._
 
-[![🔥 LIVE](https://img.shields.io/badge/🔥-LIVE_GOCART-red?style=for-the-badge)](https://go-cart-theta.vercel.app)
+[![🔥 LIVE](https://img.shields.io/badge/🔥-LIVE_GOCART-red?style=for-the-badge)](https://gocart2025.vercel.app/)
 [![⚛️ NEXT.JS](https://img.shields.io/badge/⚛️-NEXT.JS-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![15.5.6](https://img.shields.io/badge/15.5.6-green?style=for-the-badge)](https://nextjs.org/)
 [![⚛️ REACT](https://img.shields.io/badge/⚛️-REACT-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
