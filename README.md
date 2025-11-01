@@ -1,5 +1,3 @@
-<img width="933" height="511" alt="image" src="https://github.com/user-attachments/assets/cc4a8f56-4077-44bf-ab3d-fba0bae53442" /><div align="center">
-
 # 🛒 GoCart
 
 ### Modern Multi-Vendor E-Commerce Platform
