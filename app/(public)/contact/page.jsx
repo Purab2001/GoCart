@@ -35,7 +35,7 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email Us",
-      detail: "support@gocart.com",
+      detail: "support@eazycart.com",
       subdetail: "We'll respond within 24 hours",
       accent: "#22c55e",
     },

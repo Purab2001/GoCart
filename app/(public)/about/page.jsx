@@ -57,24 +57,25 @@ export default function AboutPage() {
         <div className="flex flex-col lg:flex-row gap-10 items-center bg-linear-to-br from-green-50 to-blue-50 rounded-3xl p-8 sm:p-16">
           <div className="flex-1">
             <h1 className="text-4xl sm:text-5xl font-semibold text-slate-800 mb-4">
-              About <span className="text-green-600">go</span>cart
+              About <span className="text-green-600">eazy</span>cart
+              <span className="text-green-600 text-5xl leading-0">.</span>
             </h1>
             <p className="text-slate-600 text-lg mb-6">
               Your trusted marketplace for cutting-edge gadgets and electronics.
               We connect passionate sellers with tech-savvy customers.
             </p>
             <p className="text-slate-600">
-              At gocart, we believe technology should be accessible to everyone.
-              Whether you're looking for the latest smartphones, smartwatches,
-              audio devices, or innovative accessories, we bring you a curated
-              selection of quality products from verified sellers across the
-              globe.
+              At eazycart, we believe technology should be accessible to
+              everyone. Whether you're looking for the latest smartphones,
+              smartwatches, audio devices, or innovative accessories, we bring
+              you a curated selection of quality products from verified sellers
+              across the globe.
             </p>
           </div>
           <div className="flex-1 flex justify-center">
             <Image
               src={assets.hero_product_img}
-              alt="About GoCart"
+              alt="About EazyCart"
               className="w-full max-w-md"
             />
           </div>
@@ -135,7 +136,7 @@ export default function AboutPage() {
         <Title
           visibleButton={false}
           title="What We Stand For"
-          description="Our core values guide everything we do at gocart."
+          description="Our core values guide everything we do at eazycart."
         />
 
         <div className="mt-16 bg-white rounded-2xl shadow p-8 sm:p-12">
@@ -160,8 +161,8 @@ export default function AboutPage() {
           <div className="space-y-4 text-slate-200">
             <p>
               Founded with a vision to democratize access to cutting-edge
-              technology, gocart started as a small marketplace connecting tech
-              enthusiasts with quality gadgets.
+              technology, eazycart started as a small marketplace connecting
+              tech enthusiasts with quality gadgets.
             </p>
             <p>
               Today, we've grown into a thriving community of sellers and
