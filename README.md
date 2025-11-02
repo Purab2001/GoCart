@@ -1,10 +1,10 @@
-# 🛒 GoCart
+# 🛒 EazyCart
 
 ### Modern Multi-Vendor E-Commerce Platform
 
 _Empowering organizations with seamless shopping, selling, and marketplace solutions._
 
-[![🔥 LIVE](https://img.shields.io/badge/🔥-LIVE_GOCART-red?style=for-the-badge)](https://gocart2025.vercel.app/)
+[![🔥 LIVE](https://img.shields.io/badge/🔥-EAZYCART-red?style=for-the-badge)](https://geteazycart.vercel.app/)
 [![⚛️ NEXT.JS](https://img.shields.io/badge/⚛️-NEXT.JS-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![15.5.6](https://img.shields.io/badge/15.5.6-green?style=for-the-badge)](https://nextjs.org/)
 [![⚛️ REACT](https://img.shields.io/badge/⚛️-REACT-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
@@ -38,7 +38,7 @@ _Empowering organizations with seamless shopping, selling, and marketplace solut
 
 ## 📋 Overview
 
-**GoCart** is a full-featured, open-source multi-vendor e-commerce platform that enables multiple sellers to manage their own stores on a unified marketplace. Built with modern web technologies, it offers a seamless shopping experience for customers, comprehensive tools for vendors, and powerful admin controls for platform management.
+**EazyCart** is a full-featured, open-source multi-vendor e-commerce platform that enables multiple sellers to manage their own stores on a unified marketplace. Built with modern web technologies, it offers a seamless shopping experience for customers, comprehensive tools for vendors, and powerful admin controls for platform management.
 
 ---
 
@@ -181,8 +181,8 @@ _Empowering organizations with seamless shopping, selling, and marketplace solut
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Purab2001/GoCart.git
-   cd GoCart
+   git clone https://github.com/Purab2001/EazyCart.git
+   cd EazyCart
    ```
 
 2. **Install dependencies**
