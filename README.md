@@ -1,12 +1,10 @@
-<div align="center">
-
 # 🛒 GoCart
 
 ### Modern Multi-Vendor E-Commerce Platform
 
 _Empowering organizations with seamless shopping, selling, and marketplace solutions._
 
-[![🔥 LIVE](https://img.shields.io/badge/🔥-LIVE_GOCART-red?style=for-the-badge)](https://go-cart-theta.vercel.app)
+[![🔥 LIVE](https://img.shields.io/badge/🔥-LIVE_GOCART-red?style=for-the-badge)](https://gocart2025.vercel.app/)
 [![⚛️ NEXT.JS](https://img.shields.io/badge/⚛️-NEXT.JS-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![15.5.6](https://img.shields.io/badge/15.5.6-green?style=for-the-badge)](https://nextjs.org/)
 [![⚛️ REACT](https://img.shields.io/badge/⚛️-REACT-blue?style=for-the-badge&logo=react)](https://reactjs.org/)
