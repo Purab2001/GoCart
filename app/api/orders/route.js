@@ -33,7 +33,7 @@ export async function POST(request) {
 
     if (couponCode) {
       coupon = await prisma.coupon.findUnique({
-        where: {code: couponCode}
+        where: { code: couponCode }
       });
       if (!coupon) {
         return NextResponse.json(
@@ -141,7 +141,7 @@ export async function POST(request) {
         }],
         expires_at: Math.floor(Date.now() / 1000) + 30 * 60,
         mode: 'payment',
-        success_url: `${origin}/loading?nextUrl=orders`,
+        success_url: `${origin}/loading?nextUrl=/orders&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${origin}/cart`,
         metadata: {
           orderIds: orderIds.join(','),
@@ -181,7 +181,7 @@ export async function GET(request) {
         ],
       },
       include: {
-        orderItems: {include: { product: true }},
+        orderItems: { include: { product: true } },
         address: true,
       },
       orderBy: { createdAt: "desc" },

@@ -13,7 +13,7 @@ export default function Orders() {
   const { user, isLoaded } = useUser();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const router = useRouter;
+  const router = useRouter();
 
   useEffect(() => {
     const fetchOrders = async () => {

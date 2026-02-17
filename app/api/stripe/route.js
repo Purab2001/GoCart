@@ -15,45 +15,83 @@ export async function POST(request) {
       process.env.STRIPE_WEBHOOK_SECRET
     );
 
-    const handlePaymentIntent = async (paymentIntentId, isPaid) => {
-      const session = await stripe.checkout.sessions.list({
-        payment_intent: paymentIntentId,
-      });
-      const { orderIds, userId, appId } = session.data[0].metadata;
+    const finalizeFromMetadata = async (metadata, isPaid) => {
+      const { orderIds, userId, appId } = metadata || {};
+
       if (appId !== "gocart") {
-        return NextResponse.json({ received: true, message: "Invalid appId" });
+        console.log("Stripe webhook ignored: invalid appId");
+        return;
       }
 
-      const orderIdsArray = orderIds.split(",");
+      if (!orderIds || !userId) {
+        console.log("Stripe webhook ignored: missing metadata", metadata);
+        return;
+      }
+
+      const orderIdsArray = orderIds
+        .split(",")
+        .map((id) => id.trim())
+        .filter(Boolean);
+
+      if (orderIdsArray.length === 0) {
+        console.log("Stripe webhook ignored: no orderIds", metadata);
+        return;
+      }
 
       if (isPaid) {
-        //   Mark orders as paid
-        await Promise.all(
-          orderIdsArray.map(async (orderId) => {
-            await prisma.order.update({
-              where: { id: orderId },
-              data: { isPaid: true },
-            });
-          })
-        );
-        // Clear the cart
+        await prisma.order.updateMany({
+          where: { id: { in: orderIdsArray } },
+          data: { isPaid: true },
+        });
+
         await prisma.user.update({
           where: { id: userId },
           data: { cart: {} },
         });
       } else {
-        // Delete order from database
-        await Promise.all(
-          orderIdsArray.map(async (orderId) => {
-            await prisma.order.delete({
-              where: { id: orderId },
-            });
-          })
-        );
+        await prisma.order.deleteMany({
+          where: {
+            id: { in: orderIdsArray },
+            isPaid: false,
+          },
+        });
       }
     };
 
+    const handleCheckoutSession = async (sessionId, isPaid) => {
+      const session = await stripe.checkout.sessions.retrieve(sessionId);
+      await finalizeFromMetadata(session.metadata, isPaid);
+    };
+
+    const handlePaymentIntent = async (paymentIntentId, isPaid) => {
+      const sessions = await stripe.checkout.sessions.list({
+        payment_intent: paymentIntentId,
+        limit: 1,
+      });
+
+      if (!sessions.data.length) {
+        console.log("Stripe webhook ignored: no checkout session for payment intent", paymentIntentId);
+        return;
+      }
+
+      await finalizeFromMetadata(sessions.data[0].metadata, isPaid);
+    };
+
+    console.log("Stripe webhook event:", event.type);
+
     switch (event.type) {
+      case "checkout.session.completed": {
+        const session = event.data.object;
+        if (session.payment_status === "paid") {
+          await handleCheckoutSession(session.id, true);
+        }
+        break;
+      }
+      case "checkout.session.expired": {
+        const session = event.data.object;
+        await handleCheckoutSession(session.id, false);
+        break;
+      }
       case "payment_intent.succeeded": {
         await handlePaymentIntent(event.data.object.id, true);
         break;
@@ -76,9 +114,3 @@ export async function POST(request) {
     );
   }
 }
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
