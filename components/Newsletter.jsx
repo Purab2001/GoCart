@@ -5,9 +5,9 @@ const Newsletter = () => {
     return (
         <div className='flex flex-col items-center mx-4 my-36'>
             <Title title="Join Newsletter" description="Subscribe to get exclusive deals, new arrivals, and insider updates delivered straight to your inbox every week." visibleButton={false} />
-            <div className='flex bg-slate-100 text-sm p-1 rounded-full w-full max-w-xl my-10 border-2 border-white ring ring-slate-200'>
-                <input className='flex-1 pl-5 outline-none' type="text" placeholder='Enter your email address' />
-                <button className='font-medium bg-green-500 text-white px-7 py-3 rounded-full hover:scale-103 active:scale-95 transition'>Get Updates</button>
+            <div className='flex bg-white text-sm p-1.5 rounded-full w-full max-w-xl mt-8 shadow-sm border border-slate-200 focus-within:border-slate-400 focus-within:ring-4 focus-within:ring-slate-100 transition-all duration-300'>
+                <input className='flex-1 pl-6 bg-transparent outline-none text-slate-800 placeholder-slate-400 font-medium' type="text" placeholder='Enter your email address' />
+                <button className='font-semibold bg-slate-900 text-white px-8 py-3.5 rounded-full hover:bg-slate-800 hover:shadow-md active:scale-95 transition-all duration-300'>Subscribe</button>
             </div>
         </div>
     )

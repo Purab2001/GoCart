@@ -5,10 +5,10 @@ import Link from 'next/link'
 const PageTitle = ({ heading, text, path = "/", linkText }) => {
     return (
         <div className="my-6">
-            <h2 className="text-2xl font-semibold">{heading}</h2>
-            <div className="flex items-center gap-3">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900">{heading}</h2>
+            <div className="flex items-center gap-3 mt-1">
                 <p className="text-slate-600">{text}</p>
-                <Link href={path} className="flex items-center gap-1 text-green-500 text-sm">
+                <Link href={path} className="flex items-center gap-1 text-emerald-500 hover:text-emerald-600 transition-colors text-sm font-medium">
                     {linkText} <ArrowRightIcon size={14} />
                 </Link>
             </div>

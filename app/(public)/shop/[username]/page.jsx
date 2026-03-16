@@ -35,25 +35,25 @@ export default function StoreShop() {
 
             {/* Store Info Banner */}
             {storeInfo && (
-                <div className="max-w-7xl mx-auto bg-slate-50 rounded-xl p-6 md:p-10 mt-6 flex flex-col md:flex-row items-center gap-6 shadow-xs">
+                <div className="max-w-7xl mx-auto bg-white border border-slate-200 shadow-sm rounded-2xl p-6 md:p-10 mt-6 flex flex-col md:flex-row items-center gap-8">
                     <Image
                         src={storeInfo.logo}
                         alt={storeInfo.name}
-                        className="size-32 sm:size-38 object-cover border-2 border-slate-100 rounded-md"
+                        className="size-32 sm:size-40 object-cover border border-slate-200 rounded-2xl shadow-sm"
                         width={200}
                         height={200}
                     />
                     <div className="text-center md:text-left">
-                        <h1 className="text-3xl font-semibold text-slate-800">{storeInfo.name}</h1>
-                        <p className="text-sm text-slate-600 mt-2 max-w-lg">{storeInfo.description}</p>
+                        <h1 className="text-4xl font-bold tracking-tight text-slate-900">{storeInfo.name}</h1>
+                        <p className="text-sm font-medium text-slate-500 mt-2 max-w-lg">{storeInfo.description}</p>
                         <div className="text-xs text-slate-500 mt-4 space-y-1"></div>
-                        <div className="space-y-2 text-sm text-slate-500">
-                            <div className="flex items-center">
-                                <MapPinIcon className="w-4 h-4 text-gray-500 mr-2" />
+                        <div className="space-y-3 mt-4 text-sm font-medium text-slate-600">
+                            <div className="flex items-center gap-2">
+                                <MapPinIcon className="w-4 h-4 text-emerald-500" />
                                 <span>{storeInfo.address}</span>
                             </div>
-                            <div className="flex items-center">
-                                <MailIcon className="w-4 h-4 text-gray-500 mr-2" />
+                            <div className="flex items-center gap-2">
+                                <MailIcon className="w-4 h-4 text-emerald-500" />
                                 <span>{storeInfo.email}</span>
                             </div>
                            
@@ -63,9 +63,9 @@ export default function StoreShop() {
             )}
 
             {/* Products */}
-            <div className=" max-w-7xl mx-auto mb-40">
-                <h1 className="text-2xl mt-12">Shop <span className="text-slate-800 font-medium">Products</span></h1>
-                <div className="mt-5 grid grid-cols-2 sm:flex flex-wrap gap-6 xl:gap-12 mx-auto">
+            <div className="max-w-7xl mx-auto mb-40 mt-16">
+                <h2 className="text-3xl font-bold tracking-tight text-slate-900 mb-8">Store <span className="text-emerald-500">Products</span></h2>
+                <div className="grid grid-cols-2 sm:flex flex-wrap gap-6 xl:gap-12 mx-auto">
                     {products.map((product) => <ProductCard key={product.id} product={product} />)}
                 </div>
             </div>

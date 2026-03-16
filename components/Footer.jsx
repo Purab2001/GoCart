@@ -47,45 +47,44 @@ const Footer = () => {
     ]
 
     return (
-      <footer className="mx-6 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-slate-500/30 text-slate-500">
-            <div>
-              <Link href="/" className="text-4xl font-semibold text-slate-700">
-                <span className="text-green-600">eazy</span>cart
-                <span className="text-green-600 text-5xl leading-0">.</span>
+      <footer className="bg-slate-50 border-t border-slate-200 mt-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col lg:flex-row items-start justify-between gap-16 py-16 text-slate-500">
+            <div className="lg:max-w-sm">
+              <Link href="/" className="text-4xl font-bold tracking-tight text-slate-900">
+                <span className="text-emerald-500">eazy</span>cart
+                <span className="text-emerald-500 text-5xl leading-0">.</span>
               </Link>
-              <p className="max-w-[410px] mt-6 text-sm">
+              <p className="mt-6 text-sm text-slate-600 leading-relaxed font-medium">
                 Welcome to eazycart, your ultimate destination for the latest
-                and smartest gadgets. From smartphones and smartwatches to
-                essential accessories, we bring you the best in innovation — all
-                in one place.
+                and smartest gadgets. From smartphones to smart home hubs, 
+                we bring you the best in innovation — all in one place.
               </p>
-              <div className="flex items-center gap-3 mt-5">
+              <div className="flex items-center gap-4 mt-8">
                 {socialIcons.map((item, i) => (
                   <Link
                     href={item.link}
                     key={i}
-                    className="flex items-center justify-center w-10 h-10 bg-slate-100 hover:scale-105 hover:border border-slate-300 transition rounded-full"
+                    className="flex text-slate-500 hover:text-slate-900 items-center justify-center w-11 h-11 bg-white hover:-translate-y-1 shadow-sm hover:shadow-md border border-slate-200 transition-all rounded-xl"
                   >
                     <item.icon />
                   </Link>
                 ))}
               </div>
             </div>
-            <div className="flex flex-wrap justify-between w-full md:w-[45%] gap-5 text-sm ">
+            <div className="flex flex-wrap lg:justify-end w-full gap-10 md:gap-x-20 text-sm">
               {linkSections.map((section, index) => (
-                <div key={index}>
-                  <h3 className="font-medium text-slate-700 md:mb-5 mb-3">
+                <div key={index} className="min-w-[140px]">
+                  <h3 className="font-bold text-slate-900 mb-6 tracking-wide">
                     {section.title}
                   </h3>
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-4">
                     {section.links.map((link, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        {link.icon && <link.icon />}
+                      <li key={i} className="flex items-center gap-3">
+                        {link.icon && <span className="text-slate-400"><link.icon /></span>}
                         <Link
                           href={link.path}
-                          className="hover:underline transition"
+                          className="font-medium text-slate-600 hover:text-amber-600 hover:translate-x-1 transition-all"
                         >
                           {link.text}
                         </Link>
@@ -96,9 +95,13 @@ const Footer = () => {
               ))}
             </div>
           </div>
-          <p className="py-4 text-sm text-slate-500">
-            Copyright 2025 © eazycart All Right Reserved.
-          </p>
+          <div className="border-t border-slate-200 py-6 flex flex-col md:flex-row items-center justify-between text-sm text-slate-500 font-medium">
+            <p>Copyright 2026 © eazycart All Rights Reserved.</p>
+            <div className="flex gap-4 mt-4 md:mt-0">
+                <Link href="/" className="hover:text-slate-900 transition-colors">Terms of Service</Link>
+                <Link href="/" className="hover:text-slate-900 transition-colors">Privacy Policy</Link>
+            </div>
+          </div>
         </div>
       </footer>
     );

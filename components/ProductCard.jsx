@@ -12,20 +12,23 @@ const ProductCard = ({ product }) => {
     const rating = Math.round(product.rating.reduce((acc, curr) => acc + curr.rating, 0) / product.rating.length);
 
     return (
-        <Link href={`/product/${product.id}`} className=' group max-xl:mx-auto'>
-            <div className='bg-[#F5F5F5] h-40  sm:w-60 sm:h-68 rounded-lg flex items-center justify-center'>
-                <Image width={500} height={500} className='max-h-30 sm:max-h-40 w-auto group-hover:scale-115 transition duration-300' src={product.images[0]} alt="" />
+        <Link href={`/product/${product.id}`} className='group max-xl:mx-auto block hover:-translate-y-1 transition-all duration-300'>
+            <div className='bg-[#F8F9FA] h-48 sm:w-64 sm:h-72 rounded-3xl flex items-center justify-center relative overflow-hidden group-hover:shadow-xl transition-shadow border border-slate-100'>
+                <Image width={500} height={500} className='max-h-36 sm:max-h-48 w-auto group-hover:scale-110 transition duration-500 drop-shadow-md mix-blend-multiply' src={product.images[0]} alt="" />
+                {product.rating.length > 5 && (
+                    <div className="absolute top-4 left-4 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold text-slate-800 shadow-sm border border-white">🔥 Hot</div>
+                )}
             </div>
-            <div className='flex justify-between gap-3 text-sm text-slate-800 pt-2 max-w-60'>
-                <div>
-                    <p>{product.name}</p>
-                    <div className='flex'>
+            <div className='flex justify-between gap-3 text-sm pt-4 px-2 sm:max-w-64'>
+                <div className="flex-1">
+                    <p className='font-semibold text-slate-900 group-hover:text-amber-600 transition-colors line-clamp-1'>{product.name}</p>
+                    <div className='flex gap-0.5 mt-1.5'>
                         {Array(5).fill('').map((_, index) => (
-                            <StarIcon key={index} size={14} className='text-transparent mt-0.5' fill={rating >= index + 1 ? "#00C950" : "#D1D5DB"} />
+                            <StarIcon key={index} size={14} className='text-transparent' fill={rating >= index + 1 ? "#F59E0B" : "#E5E7EB"} />
                         ))}
                     </div>
                 </div>
-                <p>{currency}{product.price}</p>
+                <p className='font-bold text-lg text-slate-900 tracking-tight'>{currency}{product.price}</p>
             </div>
         </Link>
     )

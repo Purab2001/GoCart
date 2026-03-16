@@ -129,9 +129,9 @@ export default function CreateStore() {
           >
             {/* Title */}
             <div>
-              <h1 className="text-3xl ">
+              <h1 className="text-3xl font-bold tracking-tight text-slate-800">
                 Add Your{" "}
-                <span className="text-slate-800 font-medium">Store</span>
+                <span className="text-emerald-500">Store</span>
               </h1>
               <p className="max-w-lg">
                 To become a seller on EazyCart, submit your store details for
@@ -222,7 +222,7 @@ export default function CreateStore() {
               className="border border-slate-300 outline-slate-400 w-full max-w-lg p-2 rounded resize-none"
             />
 
-            <button className="bg-slate-800 text-white px-12 py-2 rounded mt-10 mb-40 active:scale-95 hover:bg-slate-900 transition ">
+            <button className="bg-slate-900 text-white px-12 py-3.5 rounded-xl font-semibold shadow-md mt-10 mb-40 active:scale-95 hover:-translate-y-0.5 hover:shadow-lg hover:bg-slate-800 transition-all">
               Submit
             </button>
           </form>

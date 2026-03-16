@@ -1,45 +1,72 @@
-# EazyCart agent instructions
+# EazyCart – Copilot Instructions
 
-## Project snapshot
-- Next.js App Router app with three surfaces: public storefront (`app/(public)`), seller dashboard (`app/store`), and admin dashboard (`app/admin`).
-- Backend is route-handler driven under `app/api/**` (no separate server layer).
-- Auth is Clerk-based; persistence is Prisma + PostgreSQL (Neon adapter support in edge runtime).
+## Project Overview
+EazyCart is a multi-vendor e-commerce platform built with **Next.js 15 App Router**, **React 19**, **Tailwind CSS 4**, **Clerk** (auth), **Prisma + Neon PostgreSQL** (data), **Redux Toolkit** (client state), **Stripe** (payments), **ImageKit** (CDN), **OpenAI** (AI product listing), and **Inngest** (background jobs).
 
-## Core architecture and data flow
-- Global providers are wired in `app/layout.jsx`: `ClerkProvider` + Redux `StoreProvider` + `react-hot-toast` toaster.
-- Redux store setup is centralized in `lib/store.js` with slices under `lib/features/**`.
-- Cart state is dual-layer: client Redux state + persisted JSON in `User.cart` via `/api/cart` (`lib/features/cart/cartSlice.js`, `app/api/cart/route.js`).
-- Orders are created per seller/store from one checkout payload (`app/api/orders/route.js`), then split into multiple `Order` records.
-- Stripe flow: checkout session metadata stores `orderIds` + `userId`; webhook in `app/api/stripe/route.js` marks orders paid or deletes canceled orders.
+## Route Group Architecture
+The `app/` directory uses three route groups with distinct layouts and access levels:
 
-## Auth and authorization conventions
-- Route handlers read identity with `getAuth(request)` from `@clerk/nextjs/server`.
-- Client components call protected APIs with `Authorization: Bearer ${await getToken()}` (see `components/admin/AdminLayout.jsx`, `components/store/StoreLayout.jsx`).
-- Admin authorization is email-list based (`middlewares/authAdmin.js`, `ADMIN_EMAIL` env var, comma-separated).
-- Seller authorization resolves to `storeId` only when store status is `approved` (`middlewares/authSeller.js`).
+| Group | Path | Purpose | Auth |
+|-------|------|---------|------|
+| `(public)` | `/`, `/shop`, `/cart`, `/orders`, etc. | Customer-facing storefront | Optional (Clerk) |
+| `store` | `/store/*` | Vendor dashboard | Approved seller only |
+| `admin` | `/admin/*` | Platform admin panel | Admin email only |
 
-## API and coding patterns to follow
-- Use `NextResponse.json(...)` for API responses and return `{ error: ... }` payloads with explicit status codes on failures.
-- For media uploads (store logos/product images), handlers accept `formData()`, upload via ImageKit, and persist optimized URLs (`app/api/store/create/route.js`, `app/api/store/product/route.js`).
-- Prefer lowercased `Store.username` for lookups and uniqueness (`app/api/store/create/route.js`, `app/api/store/data/route.js`).
-- Keep Prisma access centralized through `lib/prisma.js`; do not create ad-hoc Prisma clients in feature files.
+## Authentication & Authorization
+- **Clerk** handles all auth. The global `middleware.ts` runs `clerkMiddleware()` on every route.
+- Protected API routes call `getAuth(request)` to get `userId`, then pass it to custom middleware:
+  - `middlewares/authSeller.js` — checks DB for an `approved` store; returns `storeId` or `false`
+  - `middlewares/authAdmin.js` — checks if the user's Clerk email is in `ADMIN_EMAIL` env var (comma-separated list)
+- Client-to-API auth uses Clerk JWT: `const token = await getToken(); axios({ headers: { Authorization: \`Bearer \${token}\` } })`
 
-## Background jobs and external integrations
-- Inngest endpoint is `app/api/inngest/route.js`; functions live in `inngest/functions.js`.
-- Clerk lifecycle events (`clerk/user.created|updated|deleted`) sync `User` rows via Inngest.
-- Coupon expiry cleanup is event-driven (`app/coupon.expired`) with `step.sleepUntil(...)` before delete.
-- OpenAI client is configured in `configs/openai.js`; ImageKit client in `configs/imagekit.js`.
+## User Sync via Inngest
+Users are **not** created directly — Clerk webhook events are handled by Inngest functions in `inngest/functions.js`:
+- `clerk/user.created` → `prisma.user.create`
+- `clerk/user.updated` → `prisma.user.update`
+- `clerk/user.deleted` → `prisma.user.delete`
 
-## Local workflow (actual scripts)
-- Install deps: `npm install`
-- Generate Prisma client: `npx prisma generate` (also runs in `postinstall` and before build)
-- Push schema: `npx prisma db push`
-- Dev server: `npm run dev` (uses Turbopack)
-- Production build: `npm run build`
-- Lint: `npm run lint`
+Do not create/update `User` records in API routes; rely on this sync pipeline.
 
-## Implementation guardrails for agents
-- Keep features aligned to the existing route partitioning: public pages in `app/(public)`, seller in `app/store`, admin in `app/admin`.
-- Reuse existing auth helpers (`authAdmin`, `authSeller`) instead of duplicating role checks.
-- When adding protected client API calls, include Clerk bearer token header as shown in existing dashboard layouts.
-- When changing order/cart/coupon behavior, update both API handlers and dependent Redux/UI consumers to keep state and DB behavior consistent.
+## Database (Prisma + Neon)
+- Prisma client in `lib/prisma.js` uses `@prisma/adapter-neon` for edge compatibility.
+- `DATABASE_URL` for pooled queries, `DIRECT_URL` for migrations.
+- **Build step runs `prisma generate`**: `"build": "prisma generate && next build"` — always run `prisma generate` after schema changes.
+- Cart is stored as a `Json` field on the `User` model, not a relation.
+
+## Redux State Management
+Four slices in `lib/features/`: `cart`, `product`, `address`, `rating`.  
+The `(public)/layout.jsx` bootstraps all slices on mount/user-change:
+```js
+dispatch(fetchProducts({}));         // always
+dispatch(fetchCart({ getToken }));   // on user login
+dispatch(uploadCart({ getToken }));  // on every cartItems change (1s debounce)
+```
+`StoreProvider.js` wraps the app in a ref-stable Redux `Provider` (client component).
+
+## API Route Conventions
+- All routes are in `app/api/` as `route.js` files using Next.js Route Handlers.
+- Pattern for protected seller routes:
+  ```js
+  const { userId } = getAuth(request);
+  const storeId = await authSeller(userId);
+  if (!storeId) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  ```
+- Product listings always filter out inactive stores (`product.store.isActive`) after fetching.
+
+## Key Environment Variables
+| Variable | Purpose |
+|----------|---------|
+| `DATABASE_URL` | Neon pooled connection string |
+| `DIRECT_URL` | Neon direct connection (migrations) |
+| `ADMIN_EMAIL` | Comma-separated admin emails |
+| `OPENAI_MODEL` | OpenAI model name (e.g. `gpt-4o`) |
+
+## Developer Workflows
+```bash
+npm run dev       # Next.js dev with Turbopack
+npm run build     # prisma generate + next build
+npx prisma migrate dev   # create & apply a migration
+npx prisma studio        # GUI to inspect DB
+```
+- `next.config.mjs` has `images.unoptimized: true` — use regular `<img>` or ImageKit URLs freely.
+- Inngest dev server must run separately for background functions to fire locally.

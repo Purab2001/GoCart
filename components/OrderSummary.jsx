@@ -77,8 +77,8 @@ const OrderSummary = ({ totalPrice, items }) => {
   };
 
   return (
-    <div className="w-full max-w-lg lg:max-w-[340px] bg-slate-50/30 border border-slate-200 text-slate-500 text-sm rounded-xl p-7">
-      <h2 className="text-xl font-medium text-slate-600">Payment Summary</h2>
+    <div className="w-full max-w-lg lg:max-w-[340px] bg-white border border-slate-200 shadow-sm text-slate-500 text-sm rounded-xl p-7">
+      <h2 className="text-xl font-bold tracking-tight text-slate-900">Payment Summary</h2>
       <p className="text-slate-400 text-xs my-4">Payment Method</p>
       <div className="flex gap-2 items-center">
         <input
@@ -234,7 +234,7 @@ const OrderSummary = ({ totalPrice, items }) => {
         onClick={(e) =>
           toast.promise(handlePlaceOrder(e), { loading: "placing Order..." })
         }
-        className="w-full bg-slate-700 text-white py-2.5 rounded hover:bg-slate-900 active:scale-95 transition-all"
+        className="w-full bg-slate-900 text-white py-3 rounded-lg font-medium hover:-translate-y-0.5 shadow hover:shadow-lg active:scale-95 transition-all"
       >
         Place Order
       </button>

@@ -69,8 +69,8 @@ export default function Cart() {
                                 cartArray.map((item, index) => (
                                     <tr key={index} className="space-x-2">
                                         <td className="flex gap-3 my-4">
-                                            <div className="flex gap-3 items-center justify-center bg-slate-100 size-18 rounded-md">
-                                                <Image src={item.images[0]} className="h-14 w-auto" alt="" width={45} height={45} />
+                                            <div className="flex gap-3 items-center justify-center bg-white border border-slate-100 shadow-sm size-20 rounded-xl overflow-hidden p-2">
+                                                <Image src={item.images[0]} className="h-14 w-auto object-contain" alt="" width={45} height={45} />
                                             </div>
                                             <div>
                                                 <p className="max-sm:text-sm">{item.name}</p>
@@ -83,7 +83,7 @@ export default function Cart() {
                                         </td>
                                         <td className="text-center">{currency}{(item.price * item.quantity).toLocaleString()}</td>
                                         <td className="text-center max-md:hidden">
-                                            <button onClick={() => handleDeleteItemFromCart(item.id)} className=" text-red-500 hover:bg-red-50 p-2.5 rounded-full active:scale-95 transition-all">
+                                            <button onClick={() => handleDeleteItemFromCart(item.id)} className="text-rose-500 hover:text-rose-600 hover:bg-rose-50 p-2.5 rounded-full active:scale-95 transition-all">
                                                 <Trash2Icon size={18} />
                                             </button>
                                         </td>

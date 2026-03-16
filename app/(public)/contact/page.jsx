@@ -74,9 +74,9 @@ export default function ContactPage() {
     <div className="mx-6">
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto my-10">
-        <div className="text-center bg-linear-to-br from-green-50 to-blue-50 rounded-3xl p-8 sm:p-16">
-          <h1 className="text-4xl sm:text-5xl font-semibold text-slate-800 mb-4">
-            Get In <span className="text-green-600">Touch</span>
+        <div className="text-center bg-slate-50 border border-slate-200 shadow-sm rounded-3xl p-8 sm:p-16">
+          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+            Get In <span className="text-emerald-500">Touch</span>
           </h1>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             Have a question or need assistance? We're here to help! Reach out to
@@ -123,14 +123,14 @@ export default function ContactPage() {
             </h2>
 
             {submitted ? (
-              <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-                <div className="text-green-600 mb-3">
+              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-6 text-center shadow-sm">
+                <div className="text-emerald-600 mb-3">
                   <Send className="mx-auto" size={48} />
                 </div>
-                <h3 className="text-lg font-medium text-green-800 mb-2">
+                <h3 className="text-lg font-bold tracking-tight text-emerald-800 mb-2">
                   Message Sent!
                 </h3>
-                <p className="text-green-700">
+                <p className="text-emerald-700 font-medium">
                   Thank you for contacting us. We'll get back to you soon.
                 </p>
               </div>
@@ -191,14 +191,14 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent resize-none"
+                    className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-400 focus:border-transparent resize-none bg-slate-50 focus:bg-white transition-colors"
                     placeholder="Tell us more about your inquiry..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full bg-green-500 text-white py-3 px-6 rounded-lg font-medium hover:bg-green-600 hover:scale-103 active:scale-95 transition flex items-center justify-center gap-2"
+                  className="w-full bg-slate-900 text-white py-3.5 px-6 rounded-lg font-semibold hover:bg-slate-800 hover:-translate-y-0.5 shadow-md hover:shadow-lg active:scale-95 transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   <Send size={18} />
                   Send Message
@@ -218,10 +218,10 @@ export default function ContactPage() {
                 {faqItems.map((faq, index) => (
                   <div
                     key={index}
-                    className="bg-slate-50 rounded-lg p-6 border border-slate-200"
+                    className="bg-slate-50 rounded-xl p-6 border border-slate-200 shadow-sm"
                   >
                     <div className="flex items-start gap-3">
-                      <div className="text-green-600 mt-1">
+                      <div className="text-emerald-500 mt-1">
                         <faq.icon size={20} />
                       </div>
                       <div>
@@ -237,15 +237,15 @@ export default function ContactPage() {
             </div>
 
             {/* Additional Info */}
-            <div className="bg-linear-to-br from-green-500 to-green-600 rounded-lg p-8 text-white">
-              <h3 className="text-xl font-semibold mb-3">
+            <div className="bg-slate-900 rounded-xl p-8 text-white shadow-lg">
+              <h3 className="text-xl font-bold tracking-tight mb-3">
                 Need Immediate Help?
               </h3>
-              <p className="text-green-50 mb-4">
+              <p className="text-slate-300 mb-6 font-medium">
                 Check out our Help Center for instant answers to common
                 questions, or contact our support team directly.
               </p>
-              <button className="bg-white text-green-600 px-6 py-2 rounded-lg font-medium hover:scale-105 active:scale-95 transition">
+              <button className="bg-white text-slate-900 px-6 py-2.5 rounded-lg font-semibold hover:-translate-y-0.5 hover:shadow-md active:scale-95 transition-all">
                 Visit Help Center
               </button>
             </div>
@@ -263,17 +263,17 @@ export default function ContactPage() {
           />
 
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <div className="bg-white px-6 py-4 rounded-lg shadow">
-              <p className="text-slate-600 text-sm">Average Response Time</p>
-              <p className="text-2xl font-bold text-green-600">2 hours</p>
+            <div className="bg-white px-6 py-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+              <p className="text-slate-500 text-sm font-medium">Average Response Time</p>
+              <p className="text-2xl font-bold tracking-tight text-emerald-500 mt-1">2 hours</p>
             </div>
-            <div className="bg-white px-6 py-4 rounded-lg shadow">
-              <p className="text-slate-600 text-sm">Customer Satisfaction</p>
-              <p className="text-2xl font-bold text-green-600">98%</p>
+            <div className="bg-white px-6 py-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+              <p className="text-slate-500 text-sm font-medium">Customer Satisfaction</p>
+              <p className="text-2xl font-bold tracking-tight text-emerald-500 mt-1">98%</p>
             </div>
-            <div className="bg-white px-6 py-4 rounded-lg shadow">
-              <p className="text-slate-600 text-sm">Support Tickets Resolved</p>
-              <p className="text-2xl font-bold text-green-600">10K+</p>
+            <div className="bg-white px-6 py-5 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow">
+              <p className="text-slate-500 text-sm font-medium">Support Tickets Resolved</p>
+              <p className="text-2xl font-bold tracking-tight text-emerald-500 mt-1">10K+</p>
             </div>
           </div>
         </div>

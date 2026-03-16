@@ -27,24 +27,24 @@ const ProductDetails = ({ product }) => {
     const averageRating = product.rating.reduce((acc, item) => acc + item.rating, 0) / product.rating.length;
     
     return (
-        <div className="flex max-lg:flex-col gap-12">
-            <div className="flex max-sm:flex-col-reverse gap-3">
-                <div className="flex sm:flex-col gap-3">
+        <div className="flex max-lg:flex-col gap-16">
+            <div className="flex max-sm:flex-col-reverse gap-4">
+                <div className="flex sm:flex-col gap-4">
                     {product.images.map((image, index) => (
-                        <div key={index} onClick={() => setMainImage(product.images[index])} className="bg-slate-100 flex items-center justify-center size-26 rounded-lg group cursor-pointer">
-                            <Image src={image} className="group-hover:scale-103 group-active:scale-95 transition" alt="" width={45} height={45} />
+                        <div key={index} onClick={() => setMainImage(product.images[index])} className={`bg-slate-50 border border-slate-100 flex items-center justify-center size-24 shadow-sm rounded-xl group cursor-pointer transition-all ${mainImage === image ? 'ring-2 ring-emerald-500' : 'hover:scale-105'}`}>
+                            <Image src={image} className="group-active:scale-95 transition-transform object-contain" alt="" width={55} height={55} />
                         </div>
                     ))}
                 </div>
-                <div className="flex justify-center items-center h-100 sm:size-113 bg-slate-100 rounded-lg ">
-                    <Image src={mainImage} alt="" width={250} height={250} />
+                <div className="flex justify-center items-center h-100 sm:size-113 bg-slate-50 border border-slate-100 rounded-2xl shadow-sm p-4">
+                    <Image src={mainImage} alt="" className="object-contain" width={320} height={320} />
                 </div>
             </div>
             <div className="flex-1">
-                <h1 className="text-3xl font-semibold text-slate-800">{product.name}</h1>
-                <div className='flex items-center mt-2'>
+                <h1 className="text-4xl font-bold tracking-tight text-slate-900">{product.name}</h1>
+                <div className='flex items-center mt-3'>
                     {Array(5).fill('').map((_, index) => (
-                        <StarIcon key={index} size={14} className='text-transparent mt-0.5' fill={averageRating >= index + 1 ? "#00C950" : "#D1D5DB"} />
+                        <StarIcon key={index} size={16} className='text-transparent' fill={averageRating >= index + 1 ? "#10b981" : "#e2e8f0"} />
                     ))}
                     <p className="text-sm ml-3 text-slate-500">{product.rating.length} Reviews</p>
                 </div>
@@ -65,7 +65,7 @@ const ProductDetails = ({ product }) => {
                             </div>
                         )
                     }
-                    <button onClick={() => !cart[productId] ? addToCartHandler() : router.push('/cart')} className="bg-slate-800 text-white px-10 py-3 text-sm font-medium rounded hover:bg-slate-900 active:scale-95 transition">
+                        <button onClick={() => !cart[productId] ? addToCartHandler() : router.push('/cart')} className="bg-slate-900 text-white px-10 py-3.5 text-sm font-semibold rounded-xl hover:-translate-y-0.5 shadow hover:shadow-lg hover:bg-slate-800 active:scale-95 transition-all">
                         {!cart[productId] ? 'Add to Cart' : 'View Cart'}
                     </button>
                 </div>

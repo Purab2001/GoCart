@@ -20,7 +20,7 @@ const OrderItem = ({ order }) => {
                     <div className="flex flex-col gap-6">
                         {order.orderItems.map((item, index) => (
                             <div key={index} className="flex items-center gap-4">
-                                <div className="w-20 aspect-square bg-slate-100 flex items-center justify-center rounded-md">
+                                <div className="w-20 aspect-square bg-white border border-slate-100 shadow-sm flex items-center justify-center rounded-xl p-2 shrink-0">
                                     <Image
                                         className="h-14 w-auto"
                                         src={item.product.images[0]}
@@ -36,7 +36,7 @@ const OrderItem = ({ order }) => {
                                     <div>
                                         {ratings.find(rating => order.id === rating.orderId && item.product.id === rating.productId)
                                             ? <Rating value={ratings.find(rating => order.id === rating.orderId && item.product.id === rating.productId).rating} />
-                                            : <button onClick={() => setRatingModal({ orderId: order.id, productId: item.product.id })} className={`text-green-500 hover:bg-green-50 transition ${order.status !== "DELIVERED" && 'hidden'}`}>Rate Product</button>
+                                            : <button onClick={() => setRatingModal({ orderId: order.id, productId: item.product.id })} className={`text-emerald-500 hover:text-emerald-600 font-medium transition-colors ${order.status !== "DELIVERED" && 'hidden'}`}>Rate Product</button>
                                         }</div>
                                     {ratingModal && <RatingModal ratingModal={ratingModal} setRatingModal={setRatingModal} />}
                                 </div>
@@ -55,11 +55,11 @@ const OrderItem = ({ order }) => {
 
                 <td className="text-left space-y-2 text-sm max-md:hidden">
                     <div
-                        className={`flex items-center justify-center gap-1 rounded-full p-1 ${order.status === 'confirmed'
-                            ? 'text-yellow-500 bg-yellow-100'
+                        className={`flex items-center justify-center gap-1 rounded-full px-3 py-1 text-xs font-semibold tracking-wide uppercase border ${order.status === 'confirmed'
+                            ? 'text-amber-600 bg-amber-50 border-amber-200'
                             : order.status === 'delivered'
-                                ? 'text-green-500 bg-green-100'
-                                : 'text-slate-500 bg-slate-100'
+                                ? 'text-emerald-600 bg-emerald-50 border-emerald-200'
+                                : 'text-slate-600 bg-slate-50 border-slate-200'
                             }`}
                     >
                         <DotIcon size={10} className="scale-250" />
@@ -75,7 +75,7 @@ const OrderItem = ({ order }) => {
                     <p>{order.address.phone}</p>
                     <br />
                     <div className="flex items-center">
-                        <span className='text-center mx-auto px-6 py-1.5 rounded bg-green-100 text-green-700' >
+                        <span className='text-center mx-auto px-6 py-1.5 rounded-full bg-emerald-50 text-emerald-600 border border-emerald-100 font-semibold text-xs tracking-wide uppercase'>
                             {order.status.replace(/_/g, ' ').toLowerCase()}
                         </span>
                     </div>

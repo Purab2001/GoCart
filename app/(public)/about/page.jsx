@@ -54,11 +54,11 @@ export default function AboutPage() {
     <div className="mx-6">
       {/* Hero Section */}
       <div className="max-w-7xl mx-auto my-10">
-        <div className="flex flex-col lg:flex-row gap-10 items-center bg-linear-to-br from-green-50 to-blue-50 rounded-3xl p-8 sm:p-16">
+        <div className="flex flex-col lg:flex-row gap-10 items-center bg-slate-50 border border-slate-200 rounded-3xl p-8 sm:p-16 shadow-sm">
           <div className="flex-1">
-            <h1 className="text-4xl sm:text-5xl font-semibold text-slate-800 mb-4">
-              About <span className="text-green-600">eazy</span>cart
-              <span className="text-green-600 text-5xl leading-0">.</span>
+            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 mb-4">
+              About <span className="text-emerald-500">eazy</span>cart
+              <span className="text-emerald-500 text-5xl leading-0">.</span>
             </h1>
             <p className="text-slate-600 text-lg mb-6">
               Your trusted marketplace for cutting-edge gadgets and electronics.
@@ -87,7 +87,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
             <div key={index} className="text-center">
-              <h3 className="text-4xl font-bold text-green-600">
+              <h3 className="text-4xl font-bold tracking-tight text-emerald-500">
                 {stat.number}
               </h3>
               <p className="text-slate-600 mt-2">{stat.label}</p>
@@ -144,7 +144,7 @@ export default function AboutPage() {
             {values.map((value, index) => (
               <div key={index} className="flex items-start gap-4">
                 <CheckCircle2
-                  className="text-green-600 mt-1 shrink-0"
+                  className="text-emerald-500 mt-1 shrink-0"
                   size={24}
                 />
                 <p className="text-slate-700 text-lg">{value}</p>
@@ -156,8 +156,8 @@ export default function AboutPage() {
 
       {/* Story Section */}
       <div className="max-w-6xl mx-auto my-20">
-        <div className="bg-linear-to-r from-slate-800 to-slate-700 rounded-3xl p-8 sm:p-16 text-white">
-          <h2 className="text-3xl sm:text-4xl font-semibold mb-6">Our Story</h2>
+        <div className="bg-slate-900 rounded-3xl p-8 sm:p-16 text-white shadow-xl">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6">Our Story</h2>
           <div className="space-y-4 text-slate-200">
             <p>
               Founded with a vision to democratize access to cutting-edge
