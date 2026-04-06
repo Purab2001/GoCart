@@ -50,7 +50,7 @@ _Empowering organizations with seamless shopping, selling, and marketplace solut
     <td align="center"><b>Dashboard</b></td>
   </tr>
   <tr>
-    <td><img src="./screenshots/screenshot-homepage.png" alt="Homepage" height="300"></td>
+    <td><img src="./screenshots/screenshot-homepage.webp" alt="Homepage" height="300"></td>
     <td><img src="./screenshots/screenshot-dashboard.png" alt="Dashboard" height="300"></td>
   </tr>
 </table>
